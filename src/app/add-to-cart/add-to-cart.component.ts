@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserDataService } from 'src/user-data.service';
 import { Product } from 'src/datatype.model';
 import { Router } from '@angular/router';
-import { MatTableDataSource } from '@angular/material/table';
-import { Subscription, filter } from 'rxjs';
+import { Subscription} from 'rxjs';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-to-cart',
@@ -38,8 +37,8 @@ export class AddToCartComponent implements OnInit {
     })
     this.userService.getSelectedProductList().subscribe((productDetail) => {
       this.productSelected = productDetail
-      const length = Object.keys(productDetail).length
-      if (length) {
+      const productLength = Object.keys(productDetail).length
+      if (productLength) {
         this.noProductValues = true
       }
       else {
@@ -81,8 +80,8 @@ export class AddToCartComponent implements OnInit {
   removeProduct(productId: number) {
     this.userService.deleteSelectedProduct(productId).subscribe((productId) => {
       this.userService.getSelectedProductList().subscribe((productUpdated) => {
-        const length = Object.keys(productUpdated).length
-        if (length) {
+        const productLength = Object.keys(productUpdated).length
+        if (productLength) {
           this.noProductValues = true
         }
         else {
@@ -119,7 +118,6 @@ export class AddToCartComponent implements OnInit {
         }
         else {
           Swal.fire("Do you want to remove product then click on delete button!");
-          // alert("Do you want to remove product then click on remove button")
         }
       }
     }
@@ -144,7 +142,6 @@ export class AddToCartComponent implements OnInit {
           })
         }
         else {
-          // alert("Can't have add more")
           Swal.fire("Don't have more stock!");
         }
 
@@ -186,7 +183,6 @@ export class AddToCartComponent implements OnInit {
       this.router.navigate(['/home'])
     }
     else{
-      // alert('Log In please!!')
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -196,8 +192,5 @@ export class AddToCartComponent implements OnInit {
       })
 
     }
-  }
-  withoutread() {
-    alert("ok")
   }
 }

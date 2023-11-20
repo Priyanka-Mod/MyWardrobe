@@ -6,6 +6,7 @@ export interface User{
     catagory:string,
     id:number
 }
+
 export interface Product{
     product_name:string,
     product_image:string,

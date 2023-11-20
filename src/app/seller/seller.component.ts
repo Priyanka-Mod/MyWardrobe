@@ -13,8 +13,5 @@ export class SellerComponent {
     },
     {
       label: 'Seller'
-    }];
-
-
-  
+    }];  
 }

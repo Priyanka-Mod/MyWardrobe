@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,7 +12,6 @@ import { UserDataService } from 'src/user-data.service';
 export class ProductFormComponent implements OnInit{
   productDetailForm!:FormGroup;
   hide:boolean = true;
-  // url:string
   productDetails:Product 
   newImage:boolean
   constructor(private formbuilder:FormBuilder,
@@ -54,7 +52,6 @@ export class ProductFormComponent implements OnInit{
         return
       }
     }
-    // productDetail.product_image  = this.url;
     this.userService.productDetails(productDetail).subscribe((product)=>{
       this.router.navigate(['/seller-product']);
     })

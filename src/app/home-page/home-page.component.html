@@ -75,7 +75,7 @@
                 <input type="text" class="h-12 my-5 p-5 w-95 rounded-md border-b border-black outline-none bg-slate-100"
                     placeholder="Search Product" #input (input)="search(input.value)">
                 <button mat-stroked-button color="basic" type="button" class="ml-2 !h-12 !rounded-md !bg-slate-100 "
-                    (click)="search(input.value)" #input>
+                    (click)="search(input.value)">
                     <span class="material-symbols-outlined flex justify-center items-center">
                         search
                     </span>
@@ -85,7 +85,7 @@
         
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div *ngFor="let product of products let index" class="selected--product p-2 rounded-md">
+            <div *ngFor="let product of products let index" class="selected--product p-2 rounded-md h-fit">
                 <div class="h-4/5 w-auto pb-4"><img src="{{ product.product_image }}" class="h-full w-full"/></div>
                 
                 <div class="flex w-full justify-between">
@@ -98,12 +98,12 @@
                         </div>
                     </div>
                     <div class="m-2">
-                        <button mat-flat-button color="accent" [disabled]="product.product_quantity == 0" type="button" class="!flex !justify-center w-full"
+                        <button mat-flat-button color="accent" [disabled]="!product.product_quantity" type="button" class="!flex !justify-center w-full"
                          (click)="addToCart(product)">
                             <ng-template #soldOut>
-                                <span class="text-white w-full flex items-center text-black">Sold Out </span>
+                                <span class="w-full flex items-center text-black">Sold Out </span>
                             </ng-template>
-                            <span *ngIf="product.product_quantity !== 0;else soldOut" class="material-symbols-outlined flex justify-center items-center">
+                            <span *ngIf="product.product_quantity;else soldOut" class="material-symbols-outlined flex justify-center items-center">
                                 shopping_cart
                             </span>
                         </button>

@@ -45,6 +45,13 @@
       "password": "Test@111",
       "catagory": "seller",
       "id": 6
+    },
+    {
+      "name": "PRIYANKA",
+      "email": "priyanka.11@gmail.com",
+      "password": "Test@111",
+      "catagory": "buyer",
+      "id": 7
     }
   ],
   "product-detail": [
@@ -92,13 +99,6 @@
     }
   ],
   "selected-products": [
-    {
-      "product_name": "Light Colors Fine Cotton Base Girls Designer Top",
-      "product_image": "https://5.imimg.com/data5/ES/WJ/FN/SELLER-42171571/girls-designer-top.jpg",
-      "product_price": 799,
-      "product_quantity": 1,
-      "id": 9
-    },
     {
       "product_name": "Floral Print Round-Neck Anarkali Kurta",
       "product_image": "https://assets.ajio.com/medias/sys_master/root/20230922/iig9/650c989aafa4cf41f5fa72bb/-473Wx593H-466609277-grey-MODEL.jpg",

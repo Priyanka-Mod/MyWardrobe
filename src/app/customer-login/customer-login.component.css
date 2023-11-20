@@ -20,4 +20,9 @@
     .image--container{
         display: none !important;
     }
+    .login--container{
+        background-image: url("https://img.freepik.com/free-vector/teamwork-concept-landing-page_52683-20164.jpg?w=826&t=st=1700480565~exp=1700481165~hmac=ab3646d1d1b63c7a3889e062701559045b640265399f2bef1df887389a5a8fed");
+        background-size: contain;
+        background-repeat-y: no-repeat;
+    }
 }

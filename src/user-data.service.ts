@@ -9,48 +9,48 @@ import { environment } from '../src/environments/environment'
   export class UserDataService{
     constructor(private readonly http:HttpClient) { }
 
-    setUserDetail(userSignIn:User){
-        return this.http.post('http://localhost:3000/sign-in',userSignIn)
+    setUserDetail(userSignIn:User): Observable<User[]> {
+        return this.http.post<User[]>(environment.apiUrl + 'sign-in',userSignIn)
     }
 
     getUserDetail(): Observable<User[]> {
-        return this.http.get<User[]>('http://localhost:3000/sign-in')
+        return this.http.get<User[]>(environment.apiUrl + 'sign-in')
     }
 
-    productDetails(productDetails:Product){
-        return this.http.post('http://localhost:3000/product-detail',productDetails)
+    productDetails(productDetails:Product):Observable<Product>{
+        return this.http.post<Product>(environment.apiUrl + 'product-detail',productDetails)
     }
 
     getProductDetails(): Observable<Product[]>{
-        return this.http.get<Product[]>('http://localhost:3000/product-detail')
+        return this.http.get<Product[]>(environment.apiUrl + 'product-detail')
     }
     
     editProduct(productId:number){
-        return this.http.get<Product>( environment.apiUrl +'product-detail'+"/"+productId)
+        return this.http.get<Product>( environment.apiUrl +'product-detail/'+productId)
     }
     
-    updateProduct(productId:number,product:Product){
-        return this.http.put<Product>('http://localhost:3000/product-detail'+'/'+productId,product)
+    updateProduct(productId:number,product:Product):Observable<Product>{
+        return this.http.put<Product>(environment.apiUrl + 'product-detail/'+productId,product)
     }
 
-    deleteSellerProduct(productId:number){
-        return this.http.delete<Product>('http://localhost:3000/product-detail'+'/'+productId)
+    deleteSellerProduct(productId:number):Observable<Product>{
+        return this.http.delete<Product>(environment.apiUrl + 'product-detail/'+productId)
     }
 
-    addSelectedProduct(productDetails:Product){
-        return this.http.post('http://localhost:3000/selected-products',productDetails)
+    addSelectedProduct(productDetails:Product):Observable<Product>{
+        return this.http.post<Product>(environment.apiUrl + 'selected-products',productDetails)
     }
 
-    getSelectedProductList(){
-        return this.http.get<Product[]>('http://localhost:3000/selected-products')
+    getSelectedProductList():Observable<Product[]>{
+        return this.http.get<Product[]>(environment.apiUrl + 'selected-products')
     }
 
-    deleteSelectedProduct(productId:number){
-        return this.http.delete<Product>('http://localhost:3000/selected-products'+'/'+productId)
+    deleteSelectedProduct(productId:number):Observable<Product>{
+        return this.http.delete<Product>(environment.apiUrl + 'selected-products/' +productId)
     }
 
-    updateSelectedQuantity(productId:number,product:Product){
-        return this.http.put<Product>('http://localhost:3000/selected-products'+'/'+productId,product)
+    updateSelectedQuantity(productId:number,product:Product):Observable<Product>{
+        return this.http.put<Product>(environment.apiUrl + 'selected-products/'+productId,product)
     }
 
   }

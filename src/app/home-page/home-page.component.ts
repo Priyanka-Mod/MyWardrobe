@@ -27,15 +27,10 @@ export class HomePageComponent implements OnInit{
       this.productList = product
       for(let quantity of this.products){
         this.inShock = quantity.product_quantity
-        
-        if(this.inShock === 0){
-          // console.log(this.inShock , quantity)
-        }
       }
       this.user = JSON.parse(localStorage.getItem('User') as string)
       this.catagory = JSON.parse(localStorage.getItem('User') as string).catagory
-      this.userEmail = JSON.parse(localStorage.getItem('User')as string).email
-      
+      this.userEmail = JSON.parse(localStorage.getItem('User') as string).email
     })
   }
 

@@ -10,7 +10,7 @@ import { UserDataService } from 'src/user-data.service';
 })
 export class SellerProductComponent {
   productList:Product[]
-  user:User | null
+  user:User | null;
   userEmail:string
   products:Product[];
   userId:number;
@@ -39,7 +39,7 @@ export class SellerProductComponent {
   logOutUser(){
     this.router.navigate(['/home'])
     localStorage.clear();
-    this.user = null
+    this.user = null;
   }
 
   addProduct(){
@@ -53,6 +53,12 @@ export class SellerProductComponent {
       }
     })
   }
+
+  /*
+  *  ---- remove product from product list ---
+  * @Param  {{productID}} : number  ---- 
+  * @return --- 
+  */
   removeProduct(productId:number){
     this.userService.deleteSellerProduct(productId).subscribe((productId)=>{
       this.userService.getProductDetails().subscribe((productUpdated)=>{
@@ -77,8 +83,6 @@ export class SellerProductComponent {
       this.products = this.productList.filter((product:Product) => {
          return product.product_name.toLowerCase().includes(data.toLowerCase());
       })
-      
-      // console.log(filteredData);
     }
     else{
       this.products = this.productList
