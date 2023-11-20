@@ -39,7 +39,7 @@ export class AddToCartComponent implements OnInit {
     this.userService.getSelectedProductList().subscribe((productDetail) => {
       this.productSelected = productDetail
       const length = Object.keys(productDetail).length
-      if (length > 0) {
+      if (length) {
         this.noProductValues = true
       }
       else {
@@ -100,9 +100,9 @@ export class AddToCartComponent implements OnInit {
   }
 
   minusCounter(element: Product) {
-    for (let el of this.actualProduct) {
+    for (let actual of this.actualProduct) {
 
-      if (el.id === element.id) {
+      if (actual.id === element.id) {
 
         if (element.product_quantity > 1) {
           element.product_quantity = element.product_quantity - 1
@@ -126,10 +126,10 @@ export class AddToCartComponent implements OnInit {
   }
 
   plusCounter(element: Product) {
-    for (let el of this.actualProduct) {
+    for (let actual of this.actualProduct) {
 
-      if (el.id === element.id) {
-        if (el.product_quantity > element.product_quantity) {
+      if (actual.id === element.id) {
+        if (actual.product_quantity > element.product_quantity) {
           element.product_quantity = element.product_quantity + 1
 
           this.userService.updateSelectedQuantity(element.id, element).subscribe((upadated) => {
@@ -161,14 +161,14 @@ export class AddToCartComponent implements OnInit {
         this.userService.getProductDetails().subscribe((actualData)=>{
           this.actualProduct = actualData
   
-          for(let a of this.productSelected) {
-            for(let b of this.actualProduct) {
-              if(a.id === b.id) {
-                  b.product_quantity = b.product_quantity -  a.product_quantity;
-                  this.subscription  = this.userService.updateProduct(b.id,b).subscribe((res)=>{
+          for(let selected of this.productSelected) {
+            for(let actual of this.actualProduct) {
+              if(selected.id === actual.id) {
+                actual.product_quantity = actual.product_quantity -  selected.product_quantity;
+                  this.subscription  = this.userService.updateProduct(actual.id,actual).subscribe((res)=>{
                     this.subscription.unsubscribe();
                   })
-                  this.subscription = this.userService.deleteSelectedProduct(a.id).subscribe(res=>{
+                  this.subscription = this.userService.deleteSelectedProduct(selected.id).subscribe(res=>{
                     this.subscription.unsubscribe();
                   })
               }

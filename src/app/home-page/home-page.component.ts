@@ -56,9 +56,6 @@ export class HomePageComponent implements OnInit{
       for(let quantity of this.products){
         this.inShock = quantity.product_quantity
         
-        if(this.inShock == 0){
-          // this.isShock = true
-        }
       }
     })
   }

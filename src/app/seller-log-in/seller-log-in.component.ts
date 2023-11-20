@@ -48,7 +48,7 @@ export class SellerLogInComponent implements OnInit {
       for(let user of this.userDetail){
         if(data.email === user.email && data.password === user.password){
           localStorage.setItem('User',JSON.stringify(user))
-          if(user.catagory == 'buyer'){
+          if(user.catagory === 'buyer'){
             this.router.navigate(['/home'])
           }
           else{
