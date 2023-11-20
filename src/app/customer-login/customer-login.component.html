@@ -25,11 +25,8 @@
                             <mat-form-field class="w-full">
                                 <mat-label>Enter your email</mat-label>
                                 <input type="email" matInput formControlName="email">
-                                <mat-error *ngIf="userFormControl.email.errors?.pattern">
-                                    invalid pattern
-                                </mat-error>
-                                <mat-error *ngIf="userFormControl.email.touched && !userFormControl.email.valid">
-                                    Please enter your email address
+                                <mat-error *ngIf="userFormControl.email.touched && !userFormControl.email.valid ">
+                                    Please enter your valid email address
                                 </mat-error>
                             </mat-form-field>
                         </div>

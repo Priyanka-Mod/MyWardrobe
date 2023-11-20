@@ -34,11 +34,8 @@
                             <mat-form-field class="w-full">
                                 <mat-label>Enter your email</mat-label>
                                 <input type="email" matInput formControlName="email">
-                                <mat-error *ngIf="userFormControl.email.errors?.pattern">
-                                    invalid pattern
-                                </mat-error>
                                 <mat-error *ngIf="userFormControl['email'].touched && !userFormControl['email'].valid">
-                                    Please enter your email address
+                                    Please enter your valid email address
                                 </mat-error>
                             </mat-form-field>
                         </div>
@@ -49,9 +46,7 @@
                                 <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
                                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
-                                <mat-error *ngIf=" userFormControl.password.touched">password
-                                    required</mat-error>
-                                <mat-error *ngIf="userFormControl.password.errors?.pattern">Enter password with 8 char containing
+                                <mat-error *ngIf="userFormControl.password.errors?.pattern" class="mb-2">Enter password with 8 char containing
                                     capital,lowercase,digit and number</mat-error>
                             </mat-form-field>
                         </div>

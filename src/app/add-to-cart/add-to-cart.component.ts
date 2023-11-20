@@ -144,7 +144,8 @@ export class AddToCartComponent implements OnInit {
           })
         }
         else {
-          alert("Can't have add more")
+          // alert("Can't have add more")
+          Swal.fire("Don't have more stock!");
         }
 
       }
@@ -189,10 +190,14 @@ export class AddToCartComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Need to Log in to buy!!!'
+        text: 'Need to Log in to buy!!!',
+      }).then(()=>{
+        this.router.navigate(['/customer-login']);
       })
-      
+
     }
   }
-
+  withoutread() {
+    alert("ok")
+  }
 }

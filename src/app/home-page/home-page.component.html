@@ -86,22 +86,22 @@
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div *ngFor="let product of products let index" class="selected--product p-2 rounded-md">
-                <div class="h-auto pb-4"><img src="{{ product.product_image }}"  width="100%" height="100%" /></div>
+                <div class="h-4/5 w-auto pb-4"><img src="{{ product.product_image }}" class="h-full w-full"/></div>
                 
                 <div class="flex w-full justify-between">
                     <div>
-                        <div>
+                        <div class="text-lg font-medium">
                             {{product.product_name}}
                         </div>
-                        <div>
+                        <div class="text-green-600 font-medium text-lg">
                             Price: {{product.product_price}} Rs
                         </div>
                     </div>
-                    <div>
-                        <button mat-flat-button color="accent" [disabled]="product.product_quantity == 0" type="button" class="!flex !justify-center"
+                    <div class="m-2">
+                        <button mat-flat-button color="accent" [disabled]="product.product_quantity == 0" type="button" class="!flex !justify-center w-full"
                          (click)="addToCart(product)">
                             <ng-template #soldOut>
-                                <span class="text-white flex items-center ">Sold Out </span>
+                                <span class="text-white w-full flex items-center text-black">Sold Out </span>
                             </ng-template>
                             <span *ngIf="product.product_quantity !== 0;else soldOut" class="material-symbols-outlined flex justify-center items-center">
                                 shopping_cart

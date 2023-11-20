@@ -1,5 +1,5 @@
 <div class="breadcrumb w-full text-base font-sans pb-2 pt-8 px-8">
-    <span *ngFor="let breadcrumb of breadcrumbArray" class="!border-r border-black px-2 "> 
+    <button mat-button *ngFor="let breadcrumb of breadcrumbArray" class=" px-2 "> 
       <a [routerLink]="breadcrumb.link">{{ breadcrumb.label }}</a> 
-    </span>
+    </button>
 </div>
