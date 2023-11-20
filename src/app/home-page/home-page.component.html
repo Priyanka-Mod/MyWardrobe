@@ -1,0 +1,169 @@
+<div class="min-h-screen flex flex-col">
+    <div>
+        <nav class="px-4 text-white  !bg-neutral-800 topnav " id='myTopnav' >   
+                <div>
+                    <a class="no-underline text-white text-2xl font-semibold text-white align-middle" routerLink="/home">My
+                        Wardrobe</a>
+                </div>
+                <div class="pt-1">
+                    <button  mat-button [matMenuTriggerFor]="beforeMenu" class="no-underline !mt-1 !pt-2 !pb-8 !px-4 font-medium text-lg ">
+                        <span class="flex items-center gap-2 pt-0.5">
+                            <span class="material-symbols-outlined text-white font-medium text-lg">
+                                person
+                            </span>
+                            <span class="text-white font-medium text-lg">{{userEmail}}</span>
+                            <span class="material-symbols-outlined text-white font-medium text-lg">
+                                expand_more
+                            </span>
+                        </span>
+                    </button>
+                    <mat-menu #beforeMenu="matMenu" xPosition="before"  class="mt-2">
+                        <button mat-menu-item class="mt-2 menu-button">
+                            <span><a class="no-underline text-gray-800" *ngIf="!user ; else logOut"
+                                    routerLink="/customer-login">LogIn /
+                                    SignUp</a>
+                            </span>
+                            <ng-template #logOut>
+                                <span><a class="no-underline text-gray-800"  (click)="logOutUser()">Log
+                                        Out</a></span>
+                            </ng-template>
+                        </button>
+                    </mat-menu>
+                    <a href="javascript:void(0);" class="icon p-2" onclick="myFunction()">
+                        <span class="material-symbols-outlined text-white font-medium  align-middle pt-1 text-lg">
+                            person
+                        </span>
+                    </a>  
+                    <a class="no-underline text-white py-2 px-4 mt-1 font-medium text-lg" routerLink="/cart">
+                        <span class="material-symbols-outlined font-medium text-lg align-middle pr-2">
+                            shopping_cart
+                        </span>
+                        <span class="align-middle">Cart</span>
+                    </a>
+                    <a  *ngIf="catagory == 'seller' && 'user'" class="no-underline text-white mt-1 py-2 px-4 font-medium text-lg" routerLink="/seller-product">
+                        <span class="material-symbols-outlined font-medium text-lg pr-2 align-middle">
+                            storefront
+                        </span>
+                        <span  class="align-middle">Sell Product </span></a>
+
+                    <a *ngIf="!user" class="no-underline text-white mt-1 py-2 px-4 font-medium text-lg" routerLink="/seller">
+                        <span class="material-symbols-outlined font-medium text-lg pr-2 align-middle">
+                            storefront
+                        </span>
+                        <span  class="align-middle">Start Selling</span></a>
+
+
+                    <a class="no-underline text-white py-2 px-4 mt-1 font-medium  !hidden  text-lg" *ngIf="!user" routerLink="/customer-login">
+                        <span class="material-symbols-outlined font-medium text-lg align-middle pr-2">
+                            person
+                        </span>
+                        <span class="align-middle">LogIn</span>
+                    </a>           
+                    <a *ngIf="user" class="no-underline text-white py-2 px-4 mt-1 font-medium  !hidden  text-lg"  (click)="logOutUser()" routerLink="/home"> 
+                        <span class="material-symbols-outlined font-medium text-lg align-middle pr-2">
+                            person
+                        </span>
+                        <span class="align-middle">Log Out</span>
+                    </a>
+                </div>
+        </nav>
+    </div>
+
+    <div class="product--container m-8 flex-auto">
+        <div>
+            <div class="flex flex-row items-center">
+                <input type="text" class="h-12 my-5 p-5 w-95 rounded-md border-b border-black outline-none bg-slate-100"
+                    placeholder="Search Product" #input (input)="search(input.value)">
+                <button mat-stroked-button color="basic" type="button" class="ml-2 !h-12 !rounded-md !bg-slate-100 "
+                    (click)="search(input.value)" #input>
+                    <span class="material-symbols-outlined flex justify-center items-center">
+                        search
+                    </span>
+                </button>
+            </div>
+        </div>
+        
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div *ngFor="let product of products let index" class="selected--product p-2 rounded-md">
+                <div class="h-auto pb-4"><img src="{{ product.product_image }}"  width="100%" height="100%" /></div>
+                
+                <div class="flex w-full justify-between">
+                    <div>
+                        <div>
+                            {{product.product_name}}
+                        </div>
+                        <div>
+                            Price: {{product.product_price}} Rs
+                        </div>
+                    </div>
+                    <div>
+                        <button mat-flat-button color="accent" [disabled]="product.product_quantity == 0" type="button" class="!flex !justify-center"
+                         (click)="addToCart(product)">
+                            <ng-template #soldOut>
+                                <span class="text-white flex items-center ">Sold Out </span>
+                            </ng-template>
+                            <span *ngIf="product.product_quantity !== 0;else soldOut" class="material-symbols-outlined flex justify-center items-center">
+                                shopping_cart
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <mat-grid-list cols="4" *ngIf="products.length" [gutterSize]="'20px'">
+            <mat-grid-tile *ngFor="let product of products let index" class="selected--product">
+                <img src="{{ product.product_image }}" />
+                
+            </mat-grid-tile>
+        </mat-grid-list> -->
+    
+        <div *ngIf="!products.length">
+            <h3 class="flex justify-center items-center h-34 text-red-600">No products found!!!</h3>
+        </div>
+    </div>
+
+    <div class="bg-neutral-800 text-white font-medium text-lg h-48 grid grid-cols-1 md:grid-cols-4 md:gap-4 pb-6 justify-items-center
+                 md:px-10 md:pt-12 pt-5 sm:px-6">
+        <span class="md:justify-self-start justify-items-center"> <a href="#">MyWardrobe</a> &copy; 2023 </span>
+        <span class="grid md:grid-rows-3 grid-cols-1 md:justify-items-start justify-items-center">
+            <span>Contact Us</span>
+            <span><a class="no-underline" href="#"> 9878878887</a></span>
+            <span><a class="no-underline" href="mywardrobe@gmail.com"> mywardrobe@gmail.com</a></span>
+        </span>
+    
+        <span><a class="no-underline" routerLink="/about-us">About Us</a></span>
+    
+        <span class="grid grid-cols-3 md:gap-16 md:justify-self-end justify-items-center gap-10">
+            <span><a class="no-underline " href="#">
+                    <svg class="w-7 h-7 fill-white" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+                        viewBox="0 0 30 30">
+                        <path
+                            d="M 9.9980469 3 C 6.1390469 3 3 6.1419531 3 10.001953 L 3 20.001953 C 3 23.860953 6.1419531 27 10.001953 27 L 20.001953 27 C 23.860953 27 27 23.858047 27 19.998047 L 27 9.9980469 C 27 6.1390469 23.858047 3 19.998047 3 L 9.9980469 3 z M 22 7 C 22.552 7 23 7.448 23 8 C 23 8.552 22.552 9 22 9 C 21.448 9 21 8.552 21 8 C 21 7.448 21.448 7 22 7 z M 15 9 C 18.309 9 21 11.691 21 15 C 21 18.309 18.309 21 15 21 C 11.691 21 9 18.309 9 15 C 9 11.691 11.691 9 15 9 z M 15 11 A 4 4 0 0 0 11 15 A 4 4 0 0 0 15 19 A 4 4 0 0 0 19 15 A 4 4 0 0 0 15 11 z">
+                        </path>
+                    </svg>
+                </a>
+            </span>
+            <span><a class="no-underline " href="#">
+                    <svg class="w-7 h-7 fill-white" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+                        viewBox="0 0 30 30">
+                        <path
+                            d="M28,6.937c-0.957,0.425-1.985,0.711-3.064,0.84c1.102-0.66,1.947-1.705,2.345-2.951c-1.03,0.611-2.172,1.055-3.388,1.295 c-0.973-1.037-2.359-1.685-3.893-1.685c-2.946,0-5.334,2.389-5.334,5.334c0,0.418,0.048,0.826,0.138,1.215 c-4.433-0.222-8.363-2.346-10.995-5.574C3.351,6.199,3.088,7.115,3.088,8.094c0,1.85,0.941,3.483,2.372,4.439 c-0.874-0.028-1.697-0.268-2.416-0.667c0,0.023,0,0.044,0,0.067c0,2.585,1.838,4.741,4.279,5.23 c-0.447,0.122-0.919,0.187-1.406,0.187c-0.343,0-0.678-0.034-1.003-0.095c0.679,2.119,2.649,3.662,4.983,3.705 c-1.825,1.431-4.125,2.284-6.625,2.284c-0.43,0-0.855-0.025-1.273-0.075c2.361,1.513,5.164,2.396,8.177,2.396 c9.812,0,15.176-8.128,15.176-15.177c0-0.231-0.005-0.461-0.015-0.69C26.38,8.945,27.285,8.006,28,6.937z">
+                        </path>
+                    </svg>
+                </a>
+            </span>
+            <span><a class="no-underline " href="#">
+                    <svg class="w-7 h-7 fill-white" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+                        viewBox="0 0 50 50">
+                        <path
+                            d="M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z">
+                        </path>
+                    </svg>
+                </a>
+            </span>
+        </span>
+    </div>
+</div>

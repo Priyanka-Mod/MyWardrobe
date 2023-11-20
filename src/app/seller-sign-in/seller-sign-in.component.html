@@ -1,0 +1,91 @@
+<div>
+    <mat-toolbar class="px-6 text-white justify-center !bg-neutral-800">
+        <mat-toolbar-row>
+            <span class="text-2xl font-semibold text-white"><a class="no-underline text-white" routerLink="/home">My Wardrobe</a></span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+<div class="h-full flex">
+    <div class="image--container bg-cover w-9/12">
+        <span class="h-full bg-neutral-500 opacity-70 text-5xl font-extrabold flex justify-center items-center text-white">A few clicks is all it takes.</span>
+    </div>
+    <div class="flex flex-col w-full">
+        <div class="flex flex-row ">
+            <app-breadcrumb [breadcrumbArray]="navigationArray"></app-breadcrumb>
+        </div>
+        <form class="form-container m-auto w-full" [formGroup]="signUserForm" (ngSubmit)="onSignInUser(signUserForm.value)">
+            <mat-card class="card">
+                <mat-card-header>
+                    <mat-card-title>Seller</mat-card-title>
+                    <mat-card-subtitle class="pb-4">Sign Up</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <div>
+                        <div>
+                            <mat-form-field class="w-full">
+                                <mat-label>Enter your name</mat-label>
+                                <input type="text" matInput formControlName="name">
+                                <mat-error *ngIf="userFormControl.name.touched && userFormControl.name.invalid">
+                                    Please enter your name
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field class="w-full">
+                                <mat-label>Enter your email</mat-label>
+                                <input type="email" matInput formControlName="email">
+                                <mat-error *ngIf="userFormControl.email.errors?.pattern">
+                                    invalid pattern
+                                </mat-error>
+                                <mat-error *ngIf="userFormControl['email'].touched && !userFormControl['email'].valid">
+                                    Please enter your email address
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field class="w-full">
+                                <mat-label>Enter your GSTIN</mat-label>
+                                <input type="email" matInput formControlName="gstin">
+                                <mat-error *ngIf="userFormControl.gstin.errors?.pattern">
+                                    invalid pattern
+                                </mat-error>
+                                <mat-error *ngIf="userFormControl.gstin.touched && !userFormControl.gstin.valid">
+                                    Please enter your gstin number
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field class="w-full">
+                                <mat-label>Enter your password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                                <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-error *ngIf=" userFormControl.password.touched">password
+                                    required</mat-error>
+                                <mat-error *ngIf="userFormControl.password.errors?.pattern">Enter password with 8 char containing
+                                    capital,lowercase,digit and number</mat-error>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <div class="p-2 w-full">
+                        <button mat-raised-button color="primary" [disabled]="signUserForm.invalid"
+                            class="w-full">Sign Up</button>
+                    </div>
+                </mat-card-actions>
+                <div class="flex flex-col items-center">
+                    <p> Already have account? </p>
+                    <button mat-flat-button color="basic" class="!text-indigo-700 mb-4" routerLink="/seller-login" type="button">Log In</button>
+                </div>
+                <div class="flex flex-row-reverse pr-4">
+                    <p class="text-base mb-3.5"><a class="no-underline" routerLink="/customer-signup"> SignUp for Customer?</a></p>
+                </div>
+            </mat-card>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+.about-us-container{
+    height: 93.4vh;
+    background: url(about_us_bg.avif);
+    background-size: cover;
+}

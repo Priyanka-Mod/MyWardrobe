@@ -1,0 +1,28 @@
+<div>
+    <mat-toolbar class="px-4 text-white justify-center !bg-neutral-800">
+        <mat-toolbar-row class="flex flex-row justify-between">
+            <span class="text-2xl font-semibold text-white"><a class="no-underline text-white" routerLink="/home">My Wardrobe</a></span>
+            <span><a class="no-underline text-white font-medium text-lg" routerLink="/home">
+                <span class="material-symbols-outlined font-medium text-lg align-middle pr-2">
+                    shopping_bag
+                </span>
+                <span class="align-middle">Shop</span> 
+            </a></span>
+            
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+<div>
+    <div class="about-us-container w-auto bg-cover">
+        <div class="flex flex-row">
+            <app-breadcrumb [breadcrumbArray]="navigationArray"></app-breadcrumb>
+        </div>
+        <div class="flex flex-col gap-2.5 p-8">
+            <p class="text-2xl font-bold"> About Us</p>
+            <p class="about-us text-xl">Our journey began with a simple idea: to provide high-quality products that inspire and
+                enrich the lives of our customers. Our diverse backgrounds, experiences, and expertise come together to
+                curate the finest selection of products that cater to your unique tastes and needs. We constantly seek out
+                the latest trends and innovations to ensure that you have access to the best products available in the market.</p>
+        </div>
+    </div>
+</div>

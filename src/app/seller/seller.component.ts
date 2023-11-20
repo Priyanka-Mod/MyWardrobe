@@ -1,0 +1,20 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-seller',
+  templateUrl: './seller.component.html',
+  styleUrls: ['./seller.component.css']
+})
+export class SellerComponent {
+  navigationArray:Array<{label:string , link?:string}> = [
+    {
+      label:'Home',
+      link:'/home',
+    },
+    {
+      label: 'Seller'
+    }];
+
+
+  
+}

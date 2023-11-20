@@ -1,0 +1,125 @@
+<div>
+    <nav class="px-4 text-white  !bg-neutral-800 topnav " id='myTopnav' >   
+        <div>
+            <a class="no-underline text-white text-2xl font-semibold text-white align-middle" routerLink="/home">My
+                Wardrobe</a>
+        </div>
+        <div class="pt-1">
+            <button  mat-button [matMenuTriggerFor]="beforeMenu" class="no-underline  !pt-2 !pb-8 !px-4 font-medium text-lg ">
+                <span class="flex items-center pt-0.5 gap-2">
+                    <span class="material-symbols-outlined text-white font-medium text-lg">
+                        person
+                    </span>
+                    <span class="text-white font-medium text-lg">{{userEmail}}</span>
+                    <span class="material-symbols-outlined text-white font-medium text-lg">
+                        expand_more
+                    </span>
+                </span>
+            </button>
+            <mat-menu #beforeMenu="matMenu" xPosition="before"  class="mt-2">
+                <button mat-menu-item class="mt-2 menu-button">
+                    <span><a class="no-underline text-gray-800" *ngIf="!user ; else logOut"
+                            routerLink="/customer-login">LogIn /
+                            SignUp</a>
+                    </span>
+                    <ng-template #logOut>
+                        <span><a class="no-underline text-gray-800"  (click)="logOutUser()">Log
+                                Out</a></span>
+                    </ng-template>
+                </button>
+            </mat-menu>
+            <a href="javascript:void(0);" class="icon p-2" onclick="myFunction()">
+                <span class="material-symbols-outlined text-white font-medium  align-middle pt-1 text-lg">
+                    person
+                </span>
+            </a>  
+            <a class="no-underline text-white py-2 px-4 mt-1 font-medium text-lg" routerLink="/product-form">
+                <span class="material-symbols-outlined font-medium text-lg align-middle pr-2">
+                    library_add
+                </span>
+                <span class="align-middle">Add Product</span>
+            </a>
+            
+            <a class="no-underline text-white py-2 px-4 mt-1 font-medium text-lg" routerLink="/home">
+                <span class="material-symbols-outlined font-medium text-lg align-middle pr-2">
+                    shopping_bag
+                </span>
+                <span class="align-middle">Shop</span>
+            </a>
+            
+            <a class="no-underline text-white py-2 px-4 mt-1 font-medium  !hidden  text-lg" *ngIf="!user" routerLink="/customer-login">
+                <span class="material-symbols-outlined font-medium text-lg align-middle pr-2">
+                    person
+                </span>
+                <span class="align-middle">LogIn</span>
+            </a>           
+            <a *ngIf="user" class="no-underline text-white py-2 px-4 mt-1 font-medium  !hidden  text-lg"  (click)="logOutUser()" routerLink="/home"> 
+                <span class="material-symbols-outlined font-medium text-lg align-middle pr-2">
+                    person
+                </span>
+                <span class="align-middle">Log Out</span>
+            </a>
+        </div>
+    </nav>
+    <div class="flex flex-row ">
+        <app-breadcrumb [breadcrumbArray]="navigationArray"></app-breadcrumb>
+    </div>
+    <div class="flex flex-col p-4"> 
+            <div class="flex flex-row items-center">
+                <input type="text" class="ml-4 h-12 my-5 p-5 w-95 rounded-md border-b border-black outline-none bg-slate-100" placeholder="Search Product"
+                 #input (input)="search(input.value)"> 
+                <button mat-stroked-button color="basic"  type="button" class="ml-2 mr-4 !h-12 !rounded-md !bg-slate-100" (click)="search(input.value)">
+                    <span class="material-symbols-outlined flex">
+                        search
+                    </span>
+                </button>
+            </div>
+            <div class="self-end mr-4">
+                <button mat-raised-button color="primary" (click)="addProduct()"> Add Product </button>  
+            </div>
+            
+    </div>
+    <div class="m-auto md:w-10/12 w-11/12 overflow-y-auto" *ngIf="products.length">
+        <table mat-table [dataSource] = 'products'>
+            <ng-container matColumnDef="Image">
+                <th mat-header-cell *matHeaderCellDef> Image </th>
+                <td mat-cell *matCellDef="let element"><img class="sm:h-36 sm:p-4 w-auto" src="{{element.product_image}}"/></td>
+            </ng-container>
+            <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element">{{element.product_name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="Price">
+                <th mat-header-cell *matHeaderCellDef> Price </th>
+                <td mat-cell *matCellDef="let element">{{element.product_price}} Rs.</td>
+            </ng-container>
+            <ng-container matColumnDef="Quantity">
+                <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                <td mat-cell *matCellDef="let element">{{element.product_quantity}}</td>
+                
+            </ng-container>
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button  (click)='removeProduct(element.id)'>
+                        <span class="material-symbols-outlined flex text-red-600">
+                            delete
+                        </span>
+                    </button>
+                    <button mat-icon-button (click)='editProduct(element.id)'> 
+                        <span class="material-symbols-outlined flex text-amber-300">
+                            edit
+                        </span>    
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <ng-template #none><span class="flex justify-center text-red-600 text-2xl">Nothing added</span> </ng-template>
+    </div>
+    <div *ngIf="!products.length">
+        <h3 class="flex justify-center items-center text-red-600">  No Products found!!!</h3>
+    </div>
+</div>

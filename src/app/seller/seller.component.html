@@ -1,0 +1,135 @@
+<div class="min-h-screen flex flex-col">
+    <nav class="px-4 text-white  !bg-neutral-800 topnav " id='myTopnav' >   
+        <div>
+            <a class="no-underline text-white text-2xl font-semibold text-white align-middle" routerLink="/home">My
+                Wardrobe</a>
+        </div>
+        <div class="pt-1">
+            <a href="javascript:void(0);" class="icon p-2" onclick="myFunction()">
+                <span class="material-symbols-outlined text-white font-medium  align-middle pt-1 text-lg">
+                    person
+                </span>
+            </a>  
+            <a class="no-underline text-white py-2 px-4 mt-1 font-medium text-lg" routerLink="/seller-signup">
+                <span class="align-middle">Get Started</span>
+            </a>
+            
+            <a class="no-underline text-white py-2 px-4 mt-1 font-medium text-lg" routerLink="/seller-login">
+                <span class="align-middle">LogIn</span>
+            </a>
+        </div>
+    </nav>
+    <div class="flex-auto">
+        <div class="flex flex-row ">
+            <app-breadcrumb [breadcrumbArray]="navigationArray"></app-breadcrumb>
+        </div>
+        <!-- <span><a class="no-underline" routerLink="/home">Home</a> </span>
+            <span>/</span>
+            <span><a class="no-underline" routerLink="/seller">Seller</a></span> -->
+        <div class="flex flex-col items-center">
+            <div class="seller--content flex flex-col relative p-7 text-sm">
+                <p class="text-xl font-semibold !mb-0 !mt-20">Create Account</p>
+                <div class="flex sm:flex-row flex-col">
+                    <div class="sm:w-8/12 w-full my-5 pb-5">
+                        <p>
+                            Creating your seller account is a quick process, taking
+                            less than 10 minutes, and requires only 3 documents. Follow
+                            the instruction to ensure a seamless account creation
+                            experience. By having these documents ready, you can
+                            streamline the account creation process and get started
+                            as an online seller in no time.</p>
+                        <ul>
+                            <li>- GSTIN</li>
+                            <li>- Activate Bank Account</li>
+                            <li>- PAN Card</li>
+                        </ul>
+                    </div>
+    
+                    <div class="create-acc-image bg-cover sm:h-auto h-72  w-full  sm:w-2/5"> </div>
+                </div>
+    
+                <div>
+                    <mat-card class="rounded-xl flex flex-col gap-1 text-sm pr-4 py-6 pl-6">
+                        <h1> Don't have GSTIN?</h1>
+                        <p>Steps to get your GSTIN to start your online business</p>
+                        <div class="flex items-center gap-2.5 text-xl">
+                            <span class="material-symbols-outlined text-blue-700 text-4xl">account_circle</span>
+                            <span>Register / Login to www.gst.gov.in</span>
+                        </div>
+                        <div class="flex items-center gap-2.5 text-xl">
+                            <span class="material-symbols-outlined  text-blue-700 text-4xl">
+                                description
+                            </span>
+                            <span>Fill in the GST Enrolment Application Form</span>
+                        </div>
+                        <div class="flex items-center gap-2.5 text-xl">
+                            <span class="material-symbols-outlined  text-blue-700 text-4xl">
+                                fact_check
+                            </span>
+                            <span>Submit Enrolment Application</span>
+                        </div>
+                    </mat-card>
+                </div>
+    
+    
+                <p class="text-xl font-semibold !mb-0 !mt-20">Help & Support</p>
+                <div class="flex sm:flex-row flex-col pb-6">
+                    <div class="sm:w-8/12 w-full my-5">
+                        <p>What sets us apart is our exceptional seller support assistance. We prioritise your
+                            needs and are committed to providing you with prompt assistance, whether you have questions,
+                            doubts, or require any kind of support for your business. Our dedicated team is here to help you
+                            every step of the way, ensuring that you have a smooth and successful selling experience on
+                            My Wardrobe. Feel free to reach out to us whenever you need assistance - we're always here to
+                            support you.
+                        </p>
+                        <p>Help & support: <a class="text-blue-700 no-underline" href="mywardrobe.support@gmail.com"> mywardrobe.support@gmail.com</a></p>
+                    </div>
+                    <div class="help-support-image  bg-cover sm:h-auto sm:w-2/5 h-72  w-full "> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-neutral-800 text-white font-medium text-lg h-48 grid grid-cols-1 md:grid-cols-4 md:gap-4 pb-6 justify-items-center
+                 md:px-10 md:pt-12 pt-5 sm:px-6">
+        <span class="md:justify-self-start justify-items-center"> <a href="#">MyWardrobe</a> &copy; 2023 </span>
+        <span class="grid md:grid-rows-3 grid-cols-1 md:justify-items-start justify-items-center">
+            <span>Contact Us</span>
+            <span><a class="no-underline" href="#"> 9878878887</a></span>
+            <span><a class="no-underline" href="mywardrobe@gmail.com"> mywardrobe@gmail.com</a></span>
+        </span>
+    
+        <span><a class="no-underline" routerLink="/about-us">About Us</a></span>
+    
+        <span class="grid grid-cols-3 md:gap-16 md:justify-self-end justify-items-center gap-10">
+            <span><a class="no-underline " href="#">
+                    <svg class="w-7 h-7 fill-white" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+                        viewBox="0 0 30 30">
+                        <path
+                            d="M 9.9980469 3 C 6.1390469 3 3 6.1419531 3 10.001953 L 3 20.001953 C 3 23.860953 6.1419531 27 10.001953 27 L 20.001953 27 C 23.860953 27 27 23.858047 27 19.998047 L 27 9.9980469 C 27 6.1390469 23.858047 3 19.998047 3 L 9.9980469 3 z M 22 7 C 22.552 7 23 7.448 23 8 C 23 8.552 22.552 9 22 9 C 21.448 9 21 8.552 21 8 C 21 7.448 21.448 7 22 7 z M 15 9 C 18.309 9 21 11.691 21 15 C 21 18.309 18.309 21 15 21 C 11.691 21 9 18.309 9 15 C 9 11.691 11.691 9 15 9 z M 15 11 A 4 4 0 0 0 11 15 A 4 4 0 0 0 15 19 A 4 4 0 0 0 19 15 A 4 4 0 0 0 15 11 z">
+                        </path>
+                    </svg>
+                </a>
+            </span>
+            <span><a class="no-underline " href="#">
+                    <svg class="w-7 h-7 fill-white" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+                        viewBox="0 0 30 30">
+                        <path
+                            d="M28,6.937c-0.957,0.425-1.985,0.711-3.064,0.84c1.102-0.66,1.947-1.705,2.345-2.951c-1.03,0.611-2.172,1.055-3.388,1.295 c-0.973-1.037-2.359-1.685-3.893-1.685c-2.946,0-5.334,2.389-5.334,5.334c0,0.418,0.048,0.826,0.138,1.215 c-4.433-0.222-8.363-2.346-10.995-5.574C3.351,6.199,3.088,7.115,3.088,8.094c0,1.85,0.941,3.483,2.372,4.439 c-0.874-0.028-1.697-0.268-2.416-0.667c0,0.023,0,0.044,0,0.067c0,2.585,1.838,4.741,4.279,5.23 c-0.447,0.122-0.919,0.187-1.406,0.187c-0.343,0-0.678-0.034-1.003-0.095c0.679,2.119,2.649,3.662,4.983,3.705 c-1.825,1.431-4.125,2.284-6.625,2.284c-0.43,0-0.855-0.025-1.273-0.075c2.361,1.513,5.164,2.396,8.177,2.396 c9.812,0,15.176-8.128,15.176-15.177c0-0.231-0.005-0.461-0.015-0.69C26.38,8.945,27.285,8.006,28,6.937z">
+                        </path>
+                    </svg>
+                </a>
+            </span>
+            <span><a class="no-underline " href="#">
+                    <svg class="w-7 h-7 fill-white" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+                        viewBox="0 0 50 50">
+                        <path
+                            d="M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z">
+                        </path>
+                    </svg>
+                </a>
+            </span>
+        </span>
+    </div>
+
+</div>

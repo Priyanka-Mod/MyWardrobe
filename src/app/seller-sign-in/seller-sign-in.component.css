@@ -1,0 +1,24 @@
+.form-container{
+    min-width: 150px;
+    max-width: 400px;
+}
+
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.image--container{
+    background-image: url("seller_image.jpg");
+}
+.sign-in-button{
+    color: rgb(0, 68, 255) !important;
+}
+@media screen and (max-width:768px) {
+    .form-container{
+        max-width: 300px;
+    }
+}
+@media screen and (max-width:480px) {
+    .image--container{
+        display: none !important;
+    }
+}
